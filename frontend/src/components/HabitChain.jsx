@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -18,6 +18,12 @@ const HabitChain = ({
   const [newHabitName, setNewHabitName] = useState('');
   const [editingHabit, setEditingHabit] = useState(null);
   const [editName, setEditName] = useState('');
+  const [isDragDisabled, setIsDragDisabled] = useState(false);
+
+  // Reset drag state on component mount
+  useEffect(() => {
+    setIsDragDisabled(false);
+  }, []);
 
   const handleDragEnd = (result) => {
     if (!result.destination) return;
@@ -33,6 +39,10 @@ const HabitChain = ({
     }));
 
     onUpdateHabits(updatedItems);
+  };
+
+  const handleDragStart = () => {
+    setIsDragDisabled(false);
   };
 
   const handleAddHabit = () => {
@@ -79,12 +89,12 @@ const HabitChain = ({
 
       {/* Habit Chain */}
       <div className="mb-8">
-        <DragDropContext onDragEnd={handleDragEnd}>
+        <DragDropContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
           <Droppable 
-            droppableId="habit-chain" 
-            isDropDisabled={false} 
+            droppableId="habit-chain"
+            isDropDisabled={isDragDisabled}
             isCombineEnabled={false}
-            ignoreContainerClipping={false}
+            ignoreContainerClipping={true}
           >
             {(provided, snapshot) => (
               <div
