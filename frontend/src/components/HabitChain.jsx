@@ -80,7 +80,12 @@ const HabitChain = ({
       {/* Habit Chain */}
       <div className="mb-8">
         <DragDropContext onDragEnd={handleDragEnd}>
-          <Droppable droppableId="habit-chain" isDropDisabled={false} isCombineEnabled={false}>
+          <Droppable 
+            droppableId="habit-chain" 
+            isDropDisabled={false} 
+            isCombineEnabled={false}
+            ignoreContainerClipping={false}
+          >
             {(provided, snapshot) => (
               <div
                 {...provided.droppableProps}
