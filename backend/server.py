@@ -10,9 +10,6 @@ from typing import List
 import uuid
 from datetime import datetime
 
-# Import routes
-from routes.habit_stacks import router as habit_stacks_router
-
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
@@ -20,6 +17,12 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+
+# Import routes after database is initialized
+from routes.habit_stacks import router as habit_stacks_router, initialize_db
+
+# Initialize database in routes
+initialize_db(db)
 
 # Create the main app without a prefix
 app = FastAPI(title="Habit Stack Builder API", version="1.0.0")
