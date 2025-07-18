@@ -15,10 +15,12 @@ from models.habit_stack import (
 
 router = APIRouter()
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# Database will be initialized by the main server
+db = None
+
+def initialize_db(database):
+    global db
+    db = database
 
 # Predefined routines data
 PREDEFINED_ROUTINES = [
