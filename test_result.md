@@ -226,17 +226,77 @@ backend:
         comment: "Minor: Some error endpoints return 500 instead of proper 404 status codes, but validation errors work correctly (422 for invalid data)"
 
 frontend:
-  - task: "Frontend Testing"
-    implemented: false
+  - task: "Home Page & Navigation"
+    implemented: true
     working: "NA"
-    file: "N/A"
+    file: "/app/frontend/src/App.js"
     stuck_count: 0
-    priority: "low"
-    needs_retesting: false
+    priority: "high"
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "testing"
-        comment: "Frontend testing not performed as per testing agent limitations"
+        comment: "Ready for comprehensive frontend testing - home page loads, navigation between views"
+
+  - task: "Predefined Routines Display"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/RoutineSelector.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Ready for testing - predefined routines should display 4 routines with proper structure"
+
+  - task: "Custom Routine Creation"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/RoutineSelector.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Ready for testing - custom routine creation form and validation"
+
+  - task: "Habit Chain Editor"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/HabitChain.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Ready for testing - drag-and-drop functionality, habit CRUD operations"
+
+  - task: "Saved Stacks Management"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/SavedStacks.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Ready for testing - viewing, loading, and deleting saved stacks"
+
+  - task: "Backend Integration"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/services/api.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Ready for testing - API service integration with backend endpoints"
 
 metadata:
   created_by: "testing_agent"
