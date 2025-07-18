@@ -306,7 +306,12 @@ metadata:
 
 test_plan:
   current_focus:
-    - "All backend API endpoints tested"
+    - "Home Page & Navigation"
+    - "Predefined Routines Display"
+    - "Custom Routine Creation"
+    - "Habit Chain Editor"
+    - "Saved Stacks Management"
+    - "Backend Integration"
   stuck_tasks: []
   test_all: true
   test_priority: "high_first"
